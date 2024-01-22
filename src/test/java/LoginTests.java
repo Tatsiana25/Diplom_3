@@ -69,6 +69,7 @@ public class LoginTests {
         loginPage.checkPlaceAnOrderButtonVisible();
         loginPage.userPersonalAccountButtonClick();
         new PersonalAccountPage(driver).exitButtonClick();
+        loginPage.checkVisibleButton();
         loginPage.checkLoginUrl(driver.getCurrentUrl());
     }
 

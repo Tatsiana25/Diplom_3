@@ -39,7 +39,7 @@ public class RegistrationTests {
         registrationPage.registration(testUserEmail, password, name);
 
         new LoginPage(driver).login(testUserEmail, password);
-
+        loginPage.checkBaseUrl(loginPage.getCurrentUrl());
         registrationPage.deleteUser(testUserEmail, password, name);
     }
 

@@ -30,6 +30,7 @@ public class GoToTabsTests {
         loginPage.login(EXISTING_USER_EMAIL, EXISTING_USER_PASSWORD);
         loginPage.checkPlaceAnOrderButtonVisible();
         loginPage.userPersonalAccountButtonClick();
+        new PersonalAccountPage(driver).checkVisibleButtonClick();
         loginPage.checkPersonalAccountProfileUrl(driver.getCurrentUrl());
         loginPage.userPersonalAccountButtonClick();
         loginPage.logoStellarBurgersClick();

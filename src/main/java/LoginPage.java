@@ -32,6 +32,9 @@ public class LoginPage extends BasePage {
     @Step("Шаг: Нажатие на кнопку 'Войти'")
     public void enterButtonClick() {
         driver.findElement(this.enterButton).click();
+    }@Step("Шаг: Проверка видимости кнопки 'Войти'")
+    public void checkVisibleButton() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(this.enterButton));
     }
 
     @Step("Шаг: Нажатие на ссылку 'Зарегистрироваться'")
@@ -46,6 +49,7 @@ public class LoginPage extends BasePage {
 
     @Step("Шаг: Авторизация с email: {0}, паролем: {1}")
     public void login(String email, String password) {
+        checkVisibleButton();
         setEmailField(email);
         setPasswordField(password);
         enterButtonClick();

@@ -15,8 +15,13 @@ public class PersonalAccountPage extends BasePage {
 
     @Step("Шаг: Нажатие на кнопку 'Выход'")
     public void exitButtonClick() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(this.exitButton));
+        checkVisibleButtonClick();
         driver.findElement(this.exitButton).click();
+    }
+
+    @Step("Шаг: Проверка видимости кнопки 'Выход'")
+    public void checkVisibleButtonClick() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(this.exitButton));
     }
 }
 

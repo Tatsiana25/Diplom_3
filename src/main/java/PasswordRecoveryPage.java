@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,16 +15,13 @@ public class PasswordRecoveryPage extends BasePage {
         this.driver = driver;
     }
 
+    @Step("Шаг: Ожидание загрузки страницы восстановления пароля")
     public void waitLoadRecoveryPage() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(this.emailField));
     }
 
-    public void setEmailField(String email) {
-        waitLoadRecoveryPage();
-        driver.findElement(this.emailField).sendKeys(email);
-    }
-
-    public void enterLinkButtonClick( ) {
+    @Step("Шаг: Нажатие на линк 'Войти'")
+    public void enterLinkButtonClick() {
         waitLoadRecoveryPage();
         driver.findElement(this.enterLinkButton).click();
     }

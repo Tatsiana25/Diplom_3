@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -39,62 +40,76 @@ public class BasePage {
     private final By firstFillings = By.cssSelector("ul:nth-of-type(3) > a:nth-of-type(1)");
 
 
+    @Step("Шаг: Проверка открытия страницы с соответствующим URL {0}'")
+    public void checkBaseUrl(String currentUrl) {
+        Assert.assertEquals(BASE_URL, currentUrl);
+    }
+
+    @Step("Шаг: Проверка открытия страницы с соответствующим URL {0}'")
+    public void checkLoginUrl(String currentUrl) {
+        Assert.assertEquals(LOGIN_URL, currentUrl);
+    }
+
+    @Step("Шаг: Проверка открытия страницы с соответствующим URL {0}'")
+    public void checkPersonalAccountProfileUrl(String currentUrl) {
+        Assert.assertEquals(PERSONAL_ACCOUNT_PROFILE_URL, currentUrl);
+    }
+
+    @Step("Шаг: Нажатие кнопки 'Конструктор'")
     public void constructorButtonClick() {
         driver.findElement(this.constructorButton).click();
     }
 
+    @Step("Шаг: Нажатие на логотип Stellar Burgers")
     public void logoStellarBurgersClick() {
         driver.findElement(this.logoStellarBurgers).click();
     }
 
+    @Step("Шаг: Нажатие на кнопку 'Личный кабинет'")
     public void userPersonalAccountButtonClick() {
         driver.findElement(this.userPersonalAccountButton).click();
     }
 
+    @Step("Шаг: Нажатие на кнопку 'Войти в аккаунт'")
     public void enterInAccountButtonClick() {
         driver.findElement(this.enterInAccountButton).click();
     }
 
+    @Step("Шаг: Нажатие на вкладку 'Булки'")
     public void rollsTabsClick() {
         driver.findElement(this.rollsTabs).click();
     }
 
+    @Step("Шаг: Нажатие на вкладку 'Соусы'")
     public void saucesTabsClick() {
         driver.findElement(this.saucesTabs).click();
     }
 
+    @Step("Шаг: Нажатие на вкладку 'Наполнители'")
     public void fillingsTabsClick() {
         driver.findElement(this.fillingsTabs).click();
     }
 
+    @Step("Шаг: Проверка видимости кнопки 'Оформить заказ'")
     public void checkPlaceAnOrderButtonVisible() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(this.enterInAccountButton));
         String textInButton = driver.findElement(this.enterInAccountButton).getText();
         Assert.assertEquals("Оформить заказ", textInButton);
     }
 
-    public void checkBaseUrl(String currentUrl) {
-        Assert.assertEquals(BASE_URL, currentUrl);
-    }
-
-    public void checkLoginUrl(String currentUrl) {
-        Assert.assertEquals(LOGIN_URL, currentUrl);
-    }
-
-    public void checkPersonalAccountProfileUrl(String currentUrl) {
-        Assert.assertEquals(PERSONAL_ACCOUNT_PROFILE_URL, currentUrl);
-    }
-
+    @Step("Шаг: Проверка видимости первой булки")
     public void checkFirstRollVisible() {
         WebElement firstRollElement = driver.findElement(this.firstRoll);
         Assert.assertTrue("First roll is not visible", firstRollElement.isDisplayed());
     }
 
+    @Step("Шаг: Проверка видимости первого соуса")
     public void checkFirstSaucesVisible() {
         WebElement firstSaucesElement = driver.findElement(this.firstSauces);
         Assert.assertTrue("First sauce is not visible", firstSaucesElement.isDisplayed());
     }
 
+    @Step("Шаг: Проверка видимости первой начинки")
     public void checkFirstFillingsVisible() {
         WebElement firstFillingsElement = driver.findElement(this.firstFillings);
         Assert.assertTrue("First filling is not visible", firstFillingsElement.isDisplayed());

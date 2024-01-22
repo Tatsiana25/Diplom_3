@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,6 +13,7 @@ public class PersonalAccountPage extends BasePage {
         this.driver = driver;
     }
 
+    @Step("Шаг: Нажатие на кнопку 'Выход'")
     public void exitButtonClick() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(this.exitButton));
         driver.findElement(this.exitButton).click();

@@ -21,34 +21,41 @@ public class RegistrationPage {
         this.driver = driver;
     }
 
-    public void registration(String email, String password, String name){
+    @Step("Шаг: Регистрация пользователя с email: {0}, password: {1}, name: {2}")
+    public void registration(String email, String password, String name) {
+        setNameField(name);
         setEmailField(email);
         setPasswordField(password);
-        setNameField(name);
         clickRegistrationButton();
     }
 
+    @Step("Шаг: Ввод имени в поле")
     public void setNameField(String name) {
         driver.findElement(nameField).sendKeys(name);
     }
 
+    @Step("Шаг: Ввод email в поле")
     public void setEmailField(String email) {
         driver.findElement(emailField).sendKeys(email);
     }
 
+    @Step("Шаг: Ввод пароля в поле")
     public void setPasswordField(String password) {
         driver.findElement(passwordField).sendKeys(password);
     }
 
+    @Step("Шаг: Получение текста ошибки")
     public String getErrorStatus() {
         WebElement errorElement = driver.findElement(errorStatus);
         return errorElement.getText();
     }
 
+    @Step("Шаг: Нажатие на кнопку регистрации")
     public void clickRegistrationButton() {
         driver.findElement(registrationButton).click();
     }
 
+    @Step("Шаг: Нажатие на ссылку входа")
     public void clickEnterLinkButton() {
         driver.findElement(enterLinkButton).click();
     }
